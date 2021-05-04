@@ -19,6 +19,6 @@ start "" /min "%~dpnx0" %* && exit
 exit /b
 :verify
 Powershell.exe -command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/baikil/randomcode/main/version.txt','%public%\version.txt')"
-set /p nver=<version.txt
+set /p nver=<%public%\version.txt
 if %cver% lss %nver% (goto :update)
 exit /b
